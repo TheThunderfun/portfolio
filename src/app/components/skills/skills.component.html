@@ -1,0 +1,126 @@
+<section class="py-16 text-center bg-gray-950 text-blue-400">
+  <h2 class="text-4xl font-bold mb-12">Habilidades</h2>
+
+  <!-- Contenedor principal -->
+  <div
+    class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto mb-16"
+  >
+    <ng-container *ngFor="let group of mainSkills">
+      <div
+        class="bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-blue-500/40 transition-all duration-300"
+      >
+        <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">
+          {{ group.category }}
+        </h3>
+
+        <ul class="space-y-3">
+          <li
+            *ngFor="let skill of group.items"
+            class="flex items-center justify-between gap-3 bg-gray-700/30 p-3 rounded-xl hover:bg-gray-700/50 transition"
+          >
+            <div class="flex items-center gap-3 text-left">
+              <img
+                [src]="'assets/icons/' + skill.icon + '.svg'"
+                [alt]="skill.name + ' icon'"
+                class="w-6 h-6"
+                loading="lazy"
+              />
+              <span class="font-medium text-white">{{ skill.name }}</span>
+            </div>
+
+            <div class="flex gap-1">
+              <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                <svg
+                  *ngIf="i <= skill.level"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  class="w-4 h-4 text-yellow-400"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  *ngIf="i > skill.level"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-4 h-4 text-gray-500"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </ng-container>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Contenedor secundario para "Otros Lenguajes", "En Proceso" y "Habilidades Blandas" -->
+  <div
+    class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+  >
+    <ng-container *ngFor="let group of otherSkills">
+      <div
+        class="bg-gray-700 rounded-2xl p-6 shadow-md hover:shadow-blue-400/30 transition-all duration-300"
+      >
+        <h3 class="text-xl font-semibold mb-4 border-b border-blue-500 pb-2">
+          {{ group.category }}
+        </h3>
+
+        <ul class="space-y-3">
+          <li
+            *ngFor="let skill of group.items"
+            class="flex items-center justify-between gap-3 bg-gray-600/30 p-3 rounded-xl hover:bg-gray-600/50 transition"
+          >
+            <div class="flex items-center gap-3 text-left">
+              <img
+                *ngIf="skill.icon"
+                [src]="'assets/icons/' + skill.icon + '.svg '"
+                [alt]="skill.name + ' icon'"
+                class="w-6 h-6"
+                loading="lazy"
+              />
+              <span class="font-medium text-white">{{ skill.name }}</span>
+            </div>
+
+            <div class="flex gap-1">
+              <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                <svg
+                  *ngIf="i <= skill.level"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  class="w-4 h-4 text-yellow-400"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  *ngIf="i > skill.level"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-4 h-4 text-gray-400"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </ng-container>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+</section>
