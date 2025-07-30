@@ -42,5 +42,45 @@ export class ProjectsComponent {
       link: 'https://thethunderfun.github.io/Francesca/',
       code: 'https://github.com/TheThunderfun/Francesca',
     },
+    {
+      title: 'La comanda',
+      description:
+        'Sistema backend desarrollado en PHP y MySQL que simula la operación de un restaurante. Permite gestionar el menú, registrar pedidos, manejar usuarios y roles, todo a través de endpoints estructurados y seguros.',
+      imageUrl: 'assets/php.png',
+      link: '',
+      code: 'https://github.com/TheThunderfun/Comandita',
+    },
   ];
+
+  currentIndex = 0;
+  projectsPerPage = 3;
+  isFading = false;
+
+  get visibleProjects(): Project[] {
+    return this.projects.slice(
+      this.currentIndex,
+      this.currentIndex + this.projectsPerPage
+    );
+  }
+
+  next(): void {
+    if (this.currentIndex + this.projectsPerPage < this.projects.length) {
+      this.fadeAndChangeIndex(this.currentIndex + this.projectsPerPage);
+    }
+  }
+
+  prev(): void {
+    if (this.currentIndex - this.projectsPerPage >= 0) {
+      this.fadeAndChangeIndex(this.currentIndex - this.projectsPerPage);
+    }
+  }
+
+  private fadeAndChangeIndex(newIndex: number): void {
+    this.isFading = true;
+
+    setTimeout(() => {
+      this.currentIndex = newIndex;
+      this.isFading = false;
+    }, 500); // el mismo tiempo que la transición CSS
+  }
 }

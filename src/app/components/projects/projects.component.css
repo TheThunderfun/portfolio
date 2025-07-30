@@ -19,3 +19,41 @@
 .text-shadow {
   text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
+
+/* Contenedor para los slides con animación de desvanecimiento */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* La grilla que contiene los proyectos */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+/* Clase para esconder con fade out */
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Clase para mostrar con fade in */
+.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+  user-select: auto;
+  transition: opacity 0.5s ease;
+}
+
+/* Responsive para móviles (1 columna) */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

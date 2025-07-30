@@ -78,4 +78,19 @@ export class SkillsComponent {
       s.category
     )
   );
+
+  levelLabels: { [key: number]: string } = {
+    1: 'Inicial',
+    2: 'Básico',
+    3: 'Intermedio',
+    4: 'Avanzado',
+    5: 'Experto',
+  };
+
+  getLevelLabel(level: number): string {
+    return this.levelLabels[level] || 'N/A';
+  }
+  getProgressWidth(level: number): string {
+    return `${(level / 5) * 100}%`;
+  }
 }
