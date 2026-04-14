@@ -1,0 +1,95 @@
+<div id="contact" class="contact-section section-wrap">
+
+  <div class="contact-layout">
+
+    <!-- ── Left: info ───────────────────────────────────────────── -->
+    <div class="contact-info">
+      <p class="section-label">Hablemos</p>
+      <h2 class="section-title">Contacto<span class="accent-dot">.</span></h2>
+      <p class="contact-pitch">
+        Estoy abierto a nuevas oportunidades, proyectos freelance y
+        colaboraciones. ¿Tienes algo en mente? Escríbeme.
+      </p>
+      <a href="mailto:fhulej27@gmail.com" class="contact-email">
+        fhulej27&#64;gmail.com
+      </a>
+    </div>
+
+    <!-- ── Right: form ──────────────────────────────────────────── -->
+    <form
+      [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()"
+      class="contact-form"
+      role="form"
+      aria-label="Formulario de contacto"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name" class="form-label">Nombre</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-input"
+          placeholder="Tu nombre"
+          aria-label="Ingresa tu nombre"
+          autocomplete="name"
+        />
+        <span
+          *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+          class="form-error"
+        >Campo requerido</span>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-input"
+          placeholder="tu@email.com"
+          aria-label="Ingresa tu correo electrónico"
+          autocomplete="email"
+        />
+        <span
+          *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+          class="form-error"
+        >Correo inválido</span>
+      </div>
+
+      <div class="form-group">
+        <label for="message" class="form-label">Mensaje</label>
+        <textarea
+          id="message"
+          formControlName="message"
+          rows="5"
+          class="form-input form-textarea"
+          placeholder="¿En qué puedo ayudarte?"
+          aria-label="Ingresa tu mensaje"
+        ></textarea>
+        <span
+          *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+          class="form-error"
+        >Campo requerido</span>
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary submit-btn"
+        [disabled]="contactForm.invalid || isSubmitting"
+      >
+        {{ isSubmitting ? 'Enviando…' : 'Enviar mensaje →' }}
+      </button>
+
+      <p
+        *ngIf="submitMessage"
+        class="submit-feedback"
+        [class.success]="submitSuccess"
+        [class.error]="!submitSuccess"
+        aria-live="assertive"
+      >{{ submitMessage }}</p>
+    </form>
+
+  </div>
+</div>

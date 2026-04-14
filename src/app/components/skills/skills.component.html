@@ -1,0 +1,41 @@
+<div class="skills-section section-wrap">
+
+  <div class="section-header">
+    <p class="section-label">Tecnologías</p>
+    <h2 class="section-title">Habilidades<span class="accent-dot">.</span></h2>
+  </div>
+
+  <div class="skills-grid">
+    <div *ngFor="let group of skills; let gi = index"
+         class="skill-group"
+         [style.animation-delay]="(gi * 0.1) + 's'">
+
+      <h3 class="skill-group-title">{{ group.category }}</h3>
+
+      <ul class="skill-list">
+        <li *ngFor="let skill of group.items" class="skill-item">
+          <div class="skill-left">
+            <img
+              *ngIf="skill.icon"
+              [src]="'assets/icons/' + skill.icon + '.svg'"
+              [alt]="skill.name"
+              class="skill-icon"
+              loading="lazy"
+            />
+            <span *ngIf="!skill.icon" class="skill-icon-placeholder">◆</span>
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+          <div class="skill-dots" [attr.aria-label]="getLevelLabel(skill.level)">
+            <span
+              *ngFor="let dot of levelDots"
+              class="dot"
+              [class.filled]="dot <= skill.level"
+            ></span>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>

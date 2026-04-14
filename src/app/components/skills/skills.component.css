@@ -1,0 +1,114 @@
+.section-header {
+  margin-bottom: 3rem;
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Group card ───────────────────────────────────────────────────── */
+.skill-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.skill-group:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 32px rgba(0, 229, 160, 0.05);
+}
+
+.skill-group-title {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.1rem;
+}
+
+/* ── List ─────────────────────────────────────────────────────────── */
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.5rem;
+  border-radius: var(--radius);
+  transition: background 0.2s;
+  cursor: default;
+}
+.skill-item:hover {
+  background: rgba(0, 229, 160, 0.05);
+}
+
+.skill-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.skill-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.skill-icon-placeholder {
+  font-size: 0.55rem;
+  color: var(--accent);
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.skill-name {
+  font-size: 0.875rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ── Dot levels ───────────────────────────────────────────────────── */
+.skill-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.dot.filled {
+  background: var(--accent);
+}
+
+.skill-item:hover .dot.filled {
+  transform: scale(1.2);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}

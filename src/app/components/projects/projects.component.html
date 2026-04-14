@@ -1,0 +1,70 @@
+<div class="projects-section section-wrap">
+
+  <div class="section-header-row">
+    <div>
+      <p class="section-label">Portafolio</p>
+      <h2 class="section-title">Proyectos<span class="accent-dot">.</span></h2>
+    </div>
+    <p class="projects-count">
+      <span class="count-number">0{{ projects.length }}</span>
+      <span class="count-label">proyectos</span>
+    </p>
+  </div>
+
+  <div class="projects-grid">
+    <article
+      *ngFor="let project of projects; let i = index"
+      class="project-card"
+      [style.animation-delay]="(i * 0.12) + 's'"
+    >
+      <div class="project-img-wrap">
+        <img
+          [src]="project.imageUrl"
+          [alt]="project.title"
+          class="project-img"
+          loading="lazy"
+        />
+        <div class="project-overlay">
+          <a
+            *ngIf="project.link"
+            [href]="project.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >Ver proyecto ↗</a>
+          <a
+            *ngIf="project.code"
+            [href]="project.code"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost"
+          >Código</a>
+        </div>
+      </div>
+
+      <div class="project-body">
+        <span class="project-index">0{{ i + 1 }}</span>
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-desc">{{ project.description }}</p>
+
+        <div class="project-links">
+          <a
+            *ngIf="project.link"
+            [href]="project.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >Demo →</a>
+          <a
+            *ngIf="project.code"
+            [href]="project.code"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link muted"
+          >GitHub</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+</div>
